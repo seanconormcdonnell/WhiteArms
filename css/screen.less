@@ -1,0 +1,234 @@
+@import "reset.css";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700,400|Oswald:300,400);
+@import "/vendor/font-awesome-4.2.0/less/font-awesome.less";
+
+
+
+body { font-family: "Open Sans", sans-serif; color: #3E3E3E; font-weight: 300; background-color: black;  }
+img { width: 100% }
+
+
+// Variables
+@title: "Oswald";
+@red: #E70B7C;
+@blue: #57c9ee;
+
+// Mixins
+.contained { margin: 0 auto; max-width: 880px; margin: auto; } 
+.title { font-family: @title; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; font-size: 2.5em }
+.wysiwyg { 
+	line-height: 1.6em;  
+	p { margin-bottom: 0.8em; }
+	a { 
+		color: #4EBAA2; 
+		&:hover { color: fadeOut(#4EBAA2, 40%); }
+	}
+} 
+
+#page-header {
+	.site-navigation {
+        position: fixed;
+        width: 100%;
+		background: rgba(20, 20, 20, 0.8);
+		color: #ffffff;
+		font-weight: 400;
+		font-family: @title;
+		text-transform: uppercase;
+		overflow: visible;
+	
+		
+        .nav-items::before { 
+        filter: blur(5px); 
+        }
+		.nav-item { padding: 1em 2em; display: inline-block; color:#ffffff;}
+        .nav-item-link {color:#ffffff; }
+		.nav-item:last-of-type {
+			background-color: @blue;
+            color:white;
+			float: right;
+			span { font-weight: 300; }
+		}
+	}
+}
+
+
+
+#about {
+	
+   background-color: black; 
+    .contained;
+	.album-cover {
+		padding-top:0px;
+        padding-bottom: 0px;
+        padding-left: 2em;
+        padding-right: 2em;
+        width: 100%;
+	}
+}
+
+#teaser{
+    .contained;
+    position: absolute;
+    margin-left: 50%;
+    left:-230px;
+    top:470px;
+    
+}
+
+#call-to-action {
+	background: black;
+	
+	
+	.call-to-action {
+		
+		text-align: center;
+
+		.action {
+			font-weight: 400;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: #fff;
+			font-family: @title;
+			font-size: 1.8em;
+			display: inline-block;		
+			padding: .5em 0;
+			background-color: @red;
+            width: 100%;
+			span { font-weight: 300; }
+		}
+	
+        .action:hover {
+            background-color: @blue;
+        }
+    }
+    
+}
+
+#page-footer {
+	background: #222222;
+    overflow: hidden;
+    text-align: center;
+   
+	.content {
+		.contained;
+		color: #fff;
+		font-size: 0.8em;
+	
+		& > * { display: inline-block; margin-left: -4px; } 
+     
+		.nav-items { 
+			width: 30%;
+			display: inline-block; 
+			vertical-align: middle;
+			padding: 1em 0 1em 1em;		
+			.nav-item {
+				padding: 1em 0; 
+				display: inline-block; 
+				a { color: #fff; border-right: 1px solid #fff; padding: 0 0.5em; }
+				&:first-of-type a { padding-left: 0; }
+				&:last-of-type a { border: none; }
+			}
+		}
+		
+		.social-media {
+			width: 40%;
+			padding: 1em 0;
+			.follow-text { vertical-align: middle; display: inline-block; margin-right: 0.8em; color: fadeOut(#fff, 50%); } 
+
+			.social-media-icons { display: inline-block; vertical-align: middle; }
+			.social-media-icon { 
+				.fa-icon();
+				list-style: none;
+				background: #fff;
+				height: 40px;
+				width: 40px;
+				border-radius: 40px;
+				color: #222;
+				display: inline-block;
+				text-align: center;
+				font-size: 2em;
+
+				margin-right: 0.2em;
+				
+				a { color: #333; display: block; height: 100%; padding: 7px 0; }
+				.twitter:before { content: @fa-var-twitter; }
+				.facebook:before { content: @fa-var-facebook; }
+				.instagram:before { content: @fa-var-instagram; }
+				.youtube:before { content: @fa-var-youtube; }
+			}
+
+		}
+		
+		.copyright { 
+			vertical-align: middle;
+			width: 30%;
+			padding: 1em 1em 1em 0;
+			color: fadeOut(#fff, 50%);
+			display: inline-block;
+		}
+	}
+}
+
+@media screen and (max-width: 1180px) {
+    #teaser{
+        position: absolute;
+    margin-left: 50%;
+    left:-230px;
+        top:420px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    #page-header {
+	
+		.nav-items { .contained; text-align: center; }
+		.nav-item { padding: 1em 2em; display: inline-block; }
+        .nav-item-link {color:#fff}
+		.nav-item:last-of-type {
+			background-color: @red;
+			float: right;
+            width: 100%;
+			span { font-weight: 300; }
+		}
+	}
+    
+    #about {
+	background: black;
+        .album {
+            .contained;
+             padding:0 2em 0 2em;
+            .album-cover { display: inline-block; vertical-align: middle; width: 100%; }
+        }
+        img{margin-top: 5em;}
+    }
+    
+    #teaser{
+        .contained;
+        height: auto;
+        position: relative;
+        bottom:0;
+        margin-left: 50%;
+        left:-230px;
+        top:0;
+
+    }
+//    #teaser{display: none;}
+   
+    
+    #call-to-action {
+	   .call-to-action{
+           .action {
+               display: none;
+           }
+	   }
+    }	
+    #page-footer{	
+        .content{
+            .social-media{width: 100%;}
+        }
+    }
+}
+
+
+
